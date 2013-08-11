@@ -13,61 +13,18 @@ function getRandomInt (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function onMessageReceived(e) {
-	var data = JSON.parse(e);
-	console.log( data.event );
-}
-
-function nextOrFirst() {
-	var next = $('#instructions .instruction.on').next(".instruction").length;
-	if( next ) {
-		$('#instructions .instruction.on').removeClass("on").next(".instruction").addClass("on");	
-	} else {
-		// start over
-		$('#instructions .instruction.on').removeClass("on");
-		$("#instructions .instruction").first().addClass("on");
-	}
-}
-
-function previousOrLast() {
-	var prev = $('#instructions .instruction.on').prev(".instruction").length;
-	if( prev ) {
-		$('#instructions .instruction.on').removeClass("on").prev(".instruction").addClass("on");
-	} else {
-		$('#instructions .instruction.on').removeClass("on");
-		$("#instructions .instruction").last().addClass("on");
-	}
-}
-
-$(window).load(function(){
-	//$("#instructions .on").fadeIn();
-	//nextOrFirst();
+$(window).load(function(){	
 	setTimeout(function(){
 		window.scrollTo(0, 1);
 	}, 10);
-
-	$("#wrapper").animate({
-		opacity: 1
-	});
 });
 
-var client, count = 0, humans = new Array();
-var iframe;
+var client, count = 0, humans = new Array(), borgs;
 $(document).ready(function() {
-
-	$("#wrapper").css({
-		top: ($(document).height()/2 - $("#wrapper").height()/2) - $("#footer").height()
-	});
-
-	$(window).resize(function(){
-		$("#wrapper").css({
-			top: ($(document).height()/2 - $("#wrapper").height()/2) - $("#footer").height()
-		});		
-	})
 
 	client = new Client( window, {
 		username: "client"+getRandomInt(1,1000),
-		roomname: "touchsite12892",
+		roomname: "touchsite12893",
 		host: "54.214.250.91",
 		port: "8882",
 		secure: false,
@@ -94,9 +51,7 @@ $(document).ready(function() {
 			humans[msg.sid] = msg;
 		}
 	});
-
-	borgs = new Borgs( $(document).width(), $(document).height(), 15 );
-
+	
 	$(document).mousemove(function(e) {
 		count++;
 		if( count == 50 ) {
@@ -111,95 +66,11 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#store").click(function(event){
-		_gaq.push(['_trackEvent', 'landingPage', 'click', 'store']);
-	});
-
-	$("#howitworksbutton").click(function(event){
-		$("#sections .section").removeClass("section-on");
-
-		$("#video").removeClass("section-on");
-		$("#instructions").addClass("section-on");
-		$(this).hide();
-		$("#videobutton").show();
-	});
-
-	$("#howitworksbuttonmobile").click(function(event){
-		$("#sections .section").removeClass("section-on");
-
-		$("#video").removeClass("section-on");
-		$("#instructions").addClass("section-on");
-		$(this).hide();
-		$("#videobuttonmobile").show();
-	});
-
-	$("#videobutton").click(function(){
-		$("#sections .section").removeClass("section-on");
-
-		$("#instructions").removeClass("section-on");
-		$("#video").addClass("section-on");
-		$(this).hide();
-		$("#howitworksbutton").show();
-	});
-
-	$("#videobuttonmobile").click(function(){
-		$("#sections .section").removeClass("section-on");
-
-		$("#instructions").removeClass("section-on");
-		$("#video").addClass("section-on");
-		$(this).hide();
-		$("#howitworksbuttonmobile").show();
-	});
-
-	$(".home").click(function(event){
-		event.preventDefault();
-		_gaq.push(['_trackEvent', 'landingPage', 'click', 'home']);
-		$("#sections .section").removeClass("section-on");
-		$("#footer .links a").removeClass("on");
-
-		$("#video").addClass("section-on");
-		$("#footer .links .home").addClass("on");
-
-		if( $(".break").css("display") == "inline" ) {
-			$("#videobutton").hide();
-			$("#howitworksbutton").show();
-		} else {
-			$("#videobuttonmobile").hide();
-			$("#howitworksbuttonmobile").show();
-		}
-	});
-
-	$(".legal").click(function(event){
-		event.preventDefault();
-		_gaq.push(['_trackEvent', 'landingPage', 'click', 'legal']);
-		$("#sections .section").removeClass("section-on");
-		$("#footer .links a").removeClass("on");
-
-		$("#legal").addClass("section-on");
-		$("#footer .links .legal").addClass("on");
-	});
-
-	$(".about").click(function(event){
-		event.preventDefault();
-		_gaq.push(['_trackEvent', 'landingPage', 'click', 'about']);
-		$("#sections .section").removeClass("section-on");
-		$("#footer .links a").removeClass("on");
-
-		$("#about").addClass("section-on");
-		$("#footer .links .about").addClass("on");		
-	});
-
-	$(".contact").click(function(event){
-		_gaq.push(['_trackEvent', 'landingPage', 'click', 'contact']);
-	});
-
-	$("#instructions .leftarrow").click(function(event){
-		previousOrLast();
-	});
-
-	$("#instructions .rightarrow").click(function(event){
-		nextOrFirst();
-	});
+	if( $(document).width() < 1600 ) {
+		borgs = new Borgs( $(document).width(), $(document).height(), getRandomInt( 9, 15 ) );	
+	} else { 
+		borgs = new Borgs( $(document).width(), $(document).height(), getRandomInt( 19, 24 ) );	
+	}
 
 	client.connect();
 });

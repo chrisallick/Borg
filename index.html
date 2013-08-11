@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Touch Room App</title>
+        <title>Borg - Dom Element Particle System</title>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<meta name="viewport" content="width=640, initial-scale=.5, user-scalable=no">
-
-        <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
         
         <link href='./css/reset.css' media='all' rel='stylesheet' type='text/css' />
         <link href='./css/main.css' media='all' rel='stylesheet' type='text/css' />
@@ -14,101 +12,11 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 		<script type="text/javascript" src="./js/reconnecting-ws.min.js"></script>
-		<script type="text/javascript" src="./js/f.js"></script>
 		<script type="text/javascript" src="./js/Client.js"></script>
 		<script type="text/javascript" src="./js/main.js"></script>
 		<script type="text/javascript" src="./js/Borgs.js"></script>
-
-        <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-41568035-1']);
-            _gaq.push(['_trackPageview']);
-
-            (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
 	</head>
 	<body>
-		<div id="humans">
-		</div>
-
-		<div id="wrapper">
-			<div id="sections">
-				<div id="video" class="section section-on">
-					<img src="./img/logo.png" />
-					<div id="videocontainer">
-						<iframe src="http://player.vimeo.com/video/70351496?title=0&amp;byline=0&amp;portrait=0" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-					</div>
-				</div>
-				<div id="instructions" class="section">
-					<div class="leftarrow">
-						<img src="./img/instructions/leftarrow.png" />
-					</div>
-					<div class="instruction on">
-						<p class="copy-two one">To start, enter your name and create a Touch Room.</p>
-						<img class="visual" src="./img/instructions/one.png" />
-					</div>
-					<div class="instruction">
-						<p class="copy-one two">Invite others to join.</p>
-						<img class="visual" src="./img/instructions/four.png" />
-					</div>
-					<div class="instruction">
-						<p class="copy-two three">Watch their touch points move about on-screen in real time.</p>
-						<img class="visual" src="./img/instructions/two.png" />
-					</div>
-					<div class="instruction">
-						<p class="copy-two four">When your fingertips touch, your phone vibrates, and you feel the connection.</p>
-						<img class="visual" src="./img/instructions/three.png" />
-					</div>
-					<div class="rightarrow">
-						<img src="./img/instructions/rightarrow.png" />
-					</div>
-				</div>
-				<div id="legal" class="section">
-					<h2>3rd Party Libraries Used (and loved) by Touch Room</h2>
-					<ul>
-						<li><a target="_blank" href="https://github.com/square/SocketRocket">Socket Rocket by Square Inc.</a> - <a target="_blank" href="https://github.com/square/SocketRocket/blob/master/LICENSE">LICENSE</a></li>
-						<li><a target="_blank" href="http://www.apache.org/foundation/">The Apache Software Foundation</a> - <a target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></li>
-						<li><a target="_blank" href="https://github.com/dominikhofmann/PRTween">PRTween by Dominik Hofmann</a> - <a target="_blank" href="https://github.com/dominikhofmann/PRTween/blob/master/LICENSE">LICENSE</a></li>
-						<li><a target="_blank" href="https://github.com/mayoff/uiimage-from-animated-gif">UIImage from Animated GIF by Rob Mayoff</a> - <a target="_blank" href="http://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a></li>
-						<li><a target="_blank" href="https://developers.google.com/analytics/devguides/collection/ios/resources">Google Analaytics iOS SDK</a></li>
-					</ul>
-				</div>
-				<div id="about" class="section">
-					<div class="betalogo">
-						<a href="#"><img width="51" src="./img/beta.jpg" /></a>
-					</div>
-					<p>Telecommunication has traditionally relied on sight and sound.<span class="break"><br/></span> But what if you could touch someone from afar? Touch Room keeps your loved ones within arm's reach.</p>
-					<p>Brought to you by the BETA Group of Goodby Silverstein & Partners in San Francisco. We use technology to find interesting solutions to great problems. What we make is never final—instead we iterate and pivot.</p>
-				</div>
-			</div>
-			<div id="buttons">
-				<a id="store" href="https://itunes.apple.com/us/app/touch-room/id673389437?mt=8&uo=4" target="itunes_store"><img src="./img/appstore.png" /></a>
-				<a id="storemobile" href="https://itunes.apple.com/us/app/touch-room/id673389437?mt=8&uo=4" target="itunes_store"><img src="./img/appstoremobile.png" /></a>
-				<div id="howitworksbutton">
-					<img src="./img/howitworks.png" />
-				</div>
-				<div id="howitworksbuttonmobile">
-					<img src="./img/howitworksmobile.png" />
-				</div>
-				<div id="videobutton">
-					<img src="./img/videothumb.png" />
-				</div>
-				<div id="videobuttonmobile">
-					<img src="./img/videothumbmobile.png" />
-				</div>
-			</div>
-		</div>
-		<div id="footer">
-			<div class="links clear">
-				<a class="home on" href="#">HOME</a>
-				<a class="about" href="#">ABOUT</a>
-				<a class="legal" href="#">LEGAL</a>
-				<a class="contact last" href="mailto:touchroomapp@gmail.com">CONTACT</a>
-			</div>
-		</div>
+		<div id="humans"></div>
 	</body>
 </html
