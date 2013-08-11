@@ -40,8 +40,8 @@ Borg = function( _x, _y, _wait ) {
 			});
 		}
 
-		self.x = getRandomInt( 150, $(document).width()-150 );
-		self.y = getRandomInt( 150, $(document).height()-150 );
+		self.x = getRandomInt( 10, $(document).width()-10 );
+		self.y = getRandomInt( 10, $(document).height()-10 );
 
 		$(self.el).animate({
 			left: self.x,

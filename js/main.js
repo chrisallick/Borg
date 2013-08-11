@@ -65,12 +65,8 @@ $(document).ready(function() {
 			count = 0;
 		}
 	});
-
-	if( $(document).width() < 1600 ) {
-		borgs = new Borgs( $(document).width(), $(document).height(), getRandomInt( 9, 15 ) );	
-	} else { 
-		borgs = new Borgs( $(document).width(), $(document).height(), getRandomInt( 19, 24 ) );	
-	}
+	
+	borgs = new Borgs( $(document).width(), $(document).height(), 500 );
 
 	client.connect();
 });
