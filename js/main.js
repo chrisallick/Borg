@@ -66,7 +66,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	borgs = new Borgs( $(document).width(), $(document).height(), 500 );
+	borgs = new Borgs( $(document).width(), $(document).height(), 100 );
 
 	client.connect();
 });
